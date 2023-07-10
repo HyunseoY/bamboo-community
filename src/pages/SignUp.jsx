@@ -2,34 +2,37 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-const Login = () => {
+const SignUp = () => {
   const navigate = useNavigate();
 
   return (
-    <LoginLayout>
-      <LoginBox>
-        <h2>접속</h2>
+    <SignUpLayout>
+      <SignUpBox>
+        <h2>가입신청서</h2>
         <input />
         <input />
-        <button>접속하겠네</button>
+        <input />
+        <input />
+        <input />
+        <button>가입하겠소</button>
         <span>-----------또는-----------</span>
         <button
           onClick={() => {
-            navigate('/signup');
+            navigate('/login');
           }}
         >
-          계정이 없소만
+          ◁ 접속으로 돌아가겠네
         </button>
-      </LoginBox>
-    </LoginLayout>
+      </SignUpBox>
+    </SignUpLayout>
   );
 };
 
-export default Login;
+export default SignUp;
 
-const LoginLayout = styled.div``;
+const SignUpLayout = styled.div``;
 
-const LoginBox = styled.div`
+const SignUpBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
