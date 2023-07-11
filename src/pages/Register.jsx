@@ -2,19 +2,21 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { login } from '../redux/modules/userSlice';
+import { join } from '../redux/modules/userSlice';
 import { colors } from '../shared/colors';
 
-const Login = () => {
+const Register = () => {
+  const [email, setEmail] = useState('');
+  const [pw, setPw] = useState('');
+  const [confPw, setConfPw] = useState('');
+  const [name, setName] = useState('');
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [email, setEmail] = useState();
-  const [pw, setPw] = useState();
-
   return (
     <StyledContainer>
-      <StContainer size={40}>접속</StContainer>
+      <StContainer size={40}>가입신청서</StContainer>
       <StyledForm>
         <label>
           <StContainer size={20}>전자우편주소</StContainer>
@@ -22,9 +24,7 @@ const Login = () => {
         <StInput
           type="text"
           value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <label>
           <StContainer size={20}>비밀번호</StContainer>
@@ -32,50 +32,65 @@ const Login = () => {
         <StInput
           type="password"
           value={pw}
-          onChange={(e) => {
-            setPw(e.target.value);
-          }}
+          onChange={(e) => setPw(e.target.value)}
+        />
+        <label>
+          <StContainer size={20}>비밀번호 확인</StContainer>
+        </label>
+        <StInput
+          type="password"
+          value={confPw}
+          onChange={(e) => setConfPw(e.target.value)}
+        />
+        <label>
+          <StContainer size={20}>별명</StContainer>
+        </label>
+        <StInput
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
         <StButton
           size="large"
           bgcolor={colors.get('green')}
-          color={colors.get('white')}
+          color="#fff"
           onClick={() => {
-            // (1) 로그인 완료
-
-            alert(email);
-            alert(pw);
+            if (pw !== confPw) {
+              alert('비밀번호가 다릅니다. 확인해주세요!');
+              return false;
+            }
 
             dispatch(
-              login({
-                email: email,
-                pw: pw,
+              join({
+                email,
+                pw,
+                name,
               })
             );
 
-            // (2) 페이지 이동
-            navigate('/');
+            alert('회원가입 완료!');
+            navigate('/login');
           }}
         >
-          접속하겠네
+          가입하겠소
         </StButton>
         <StButton
           type="button"
           size="large"
           bgcolor={colors.get('green')}
-          color={colors.get('white')}
+          color="#fff"
           onClick={() => {
-            navigate('/register');
+            navigate('/login');
           }}
         >
-          계정이 없소만
+          ◁ 접속으로 돌아가겠네
         </StButton>
       </StyledForm>
     </StyledContainer>
   );
 };
 
-export default Login;
+export default Register;
 
 const StyledContainer = styled.section`
   height: 79vh;

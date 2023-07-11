@@ -1,20 +1,20 @@
 import React from 'react';
-import Layout from '../components/Layout';
-import Form from '../components/Form';
 import { styled } from 'styled-components';
+import Layout from '../../components/Layout';
+import Form from '../../components/Form';
 
-const Home = () => {
+const Complaint = () => {
   return (
     <Layout>
       <FeedBox>
         <Form />
-        <StP>최근에는 어떤 일들이 있었는지 아는가</StP>
+        <StP>쌓아두어 무엇하나.. 속이나 풀고가게</StP>
       </FeedBox>
     </Layout>
   );
 };
 
-export default Home;
+export default Complaint;
 
 const FeedBox = styled.div`
   background-color: #f2f2f0;

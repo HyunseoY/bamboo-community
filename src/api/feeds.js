@@ -3,7 +3,7 @@ import axios from 'axios';
 // 조회
 const getFeeds = async () => {
   const response = await axios.get(
-    `${process.env.REACT_APP_BAMBOO_FEEDS_URL}/feeds`
+    `${process.env.REACT_APP_BAMBOO_API_URL}/feeds`
   );
   return response;
 };

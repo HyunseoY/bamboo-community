@@ -1,9 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { logout } from '../redux/modules/userSlice';
 
 const Dropdown = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const userList = useSelector(function (state) {
+    return state.userSlice;
+  });
+
+  const loginUser = userList.find((user) => user.isLogin === true) || {};
 
   return (
     <DropdownBox>
@@ -14,7 +24,17 @@ const Dropdown = () => {
       >
         마이페이지
       </List>
-      <List>로그아웃</List>
+      <List
+        onClick={() => {
+          const isConfirmed = window.confirm('로그아웃 되었습니다');
+          if (isConfirmed) {
+            dispatch(logout(loginUser.id));
+            navigate('/login');
+          }
+        }}
+      >
+        로그아웃
+      </List>
     </DropdownBox>
   );
 };
@@ -22,14 +42,14 @@ const Dropdown = () => {
 export default Dropdown;
 
 const DropdownBox = styled.div`
-  width: 150px;
+  width: 110px;
   list-style: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 65px;
+  top: 50px;
   border-radius: 10px;
   overflow: hidden;
 

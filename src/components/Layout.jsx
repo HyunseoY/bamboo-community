@@ -27,7 +27,6 @@ const LayoutContainer = styled.div`
 
 const BodyAerea = styled.div`
   display: flex;
-  /* margin-top: 10px; */
   width: 1200px;
 `;
 
@@ -37,5 +36,4 @@ const FeedAerea = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: #f2f2f0;
 `;

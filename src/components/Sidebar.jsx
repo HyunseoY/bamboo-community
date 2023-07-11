@@ -22,27 +22,47 @@ const Sidebar = () => {
         &nbsp; HOME
       </SideItem>
 
-      <SideItem>
+      <SideItem
+        onClick={() => {
+          navigate('/complaint');
+        }}
+      >
         <ChatBubbleIcon />
         &nbsp; 속풀이
       </SideItem>
 
-      <SideItem>
+      <SideItem
+        onClick={() => {
+          navigate('/info');
+        }}
+      >
         <InfoIcon />
         &nbsp; 꿀정보
       </SideItem>
 
-      <SideItem>
+      <SideItem
+        onClick={() => {
+          navigate('/expose');
+        }}
+      >
         <MicIcon />
         &nbsp; 고백
       </SideItem>
 
-      <SideItem>
+      <SideItem
+        onClick={() => {
+          navigate('/secret');
+        }}
+      >
         <HearingIcon />
         &nbsp; 비밀
       </SideItem>
 
-      <SideItem>
+      <SideItem
+        onClick={() => {
+          navigate('/counsel');
+        }}
+      >
         <ForumIcon />
         &nbsp; 상담
       </SideItem>
@@ -64,6 +84,7 @@ const SideItem = styled.div`
   padding: 10px;
   display: flex;
   align-items: center;
+  font-size: 15px;
 
   &:hover {
     cursor: pointer;
