@@ -23,7 +23,7 @@ const Profile = () => {
 export default Profile;
 
 const ProfileContainer = styled.div`
-  width: 950px;
+  width: 100%;
   background-color: #ffffff;
 `;
 
@@ -34,10 +34,4 @@ const ProfileBox = styled.div`
   padding: 50px;
   border-bottom: 1px solid #b7dce8;
   margin: 15px;
-`;
-
-const StContainer = styled.div`
-  font-size: ${({ size }) => `${size}px`};
-  color: ${({ color }) => color};
-  font-weight: ${({ fw }) => fw};
 `;

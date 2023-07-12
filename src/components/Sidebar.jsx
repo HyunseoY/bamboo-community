@@ -73,14 +73,14 @@ const Sidebar = () => {
 export default Sidebar;
 
 const SidebarContainer = styled.div`
-  width: 250px;
+  width: 20%;
   height: 100vh;
   border-right: 1px solid #d9d9d9;
   background: #fff;
 `;
 
 const SideItem = styled.div`
-  margin-top: 20px;
+  margin: 20px 0 0 20px;
   padding: 10px;
   display: flex;
   align-items: center;

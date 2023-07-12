@@ -8,10 +8,10 @@ const Layout = ({ children }) => {
     <LayoutContainer>
       <Header />
 
-      <BodyAerea>
+      <BodyArea>
         <Sidebar />
-        <FeedAerea>{children}</FeedAerea>
-      </BodyAerea>
+        <FeedArea>{children}</FeedArea>
+      </BodyArea>
     </LayoutContainer>
   );
 };
@@ -25,13 +25,15 @@ const LayoutContainer = styled.div`
   align-items: center;
 `;
 
-const BodyAerea = styled.div`
+const BodyArea = styled.div`
   display: flex;
-  width: 1200px;
+  justify-content: center;
+  width: 80%;
 `;
 
-const FeedAerea = styled.div`
+const FeedArea = styled.div`
   height: 100vh;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

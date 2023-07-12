@@ -35,7 +35,7 @@ const Header = () => {
               setView(!view);
             }}
           >
-            반갑소, {loginUser.userName} !!
+            {/* 반갑소, {loginUser.userName} !! */}
             {view ? <ExpandLessIcon /> : <ExpandMoreIcon />}
             {view && <Dropdown />}
           </NickName>
@@ -57,10 +57,11 @@ const HeaderContainer = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 999;
+  padding: 0 20px 0 20px;
 `;
 
 const HeaderItems = styled.div`
-  width: 1200px;
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;

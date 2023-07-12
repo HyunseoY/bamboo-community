@@ -28,14 +28,14 @@ const Form = () => {
 export default Form;
 
 const FormBox = styled.div`
-  width: 950px;
+  width: 100%;
   display: flex;
   justify-content: center;
 `;
 
 const FormBtn = styled.span`
-  width: 800px;
-  margin-top: 20px;
+  width: 85%;
+  margin: 40px 0 40px 0;
   background-color: #7fa102;
   padding: 15px;
   border-radius: 15px;

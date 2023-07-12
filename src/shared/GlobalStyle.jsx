@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import background from '../assets/background.svg';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -11,11 +12,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    overflow: hidden;
-  }
-
-  html {
-    font-size: 10px;
+    background-image: url(${background});
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 `;
 

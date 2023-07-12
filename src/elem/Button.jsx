@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import flex from '../utils/flex';
 
 const Button = (props) => {
   return (
@@ -13,13 +12,12 @@ const Button = (props) => {
 export default Button;
 
 const StButton = styled.button`
-  ${flex({})};
-  flex-shrink: 0;
-  border: 1px solid #eee;
+  border: ${({ border, disabled }) => (disabled ? '1px solid #eee' : border)};
   background-color: #fff;
-  color: #fff;
+  color: ${({ color, disabled }) => (disabled ? '#ddd' : color)};
   height: 46px;
   border-radius: 8px;
+  margin: ${({ margin, disabled }) => (`${margin}`, disabled ? 0 : margin)};
   background-color: ${({ bgcolor, disabled }) => (disabled ? '#ddd' : bgcolor)};
   cursor: pointer;
 

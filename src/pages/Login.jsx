@@ -1,16 +1,37 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { login } from '../redux/modules/userSlice';
 import { colors } from '../shared/colors';
+import { useMutation } from 'react-query';
+import { loginUser } from '../api/user';
 
 const Login = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const [id, setId] = useState('');
+  const [password, setPassword] = useState('');
 
-  const [email, setEmail] = useState();
-  const [pw, setPw] = useState();
+  const navigate = useNavigate();
+  const loginMutation = useMutation(loginUser);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      // 로그인 API 호출
+      const response = await loginMutation.mutateAsync({
+        id,
+        password,
+      });
+
+      console.log('로그인 성공!');
+      console.log('토큰:', response.token);
+      // 로그인 성공 후 추가적인 작업 수행 가능
+
+      navigate('/'); // 로그인 성공 시 이동할 페이지 경로
+    } catch (error) {
+      console.error('로그인 오류:', error.message);
+      // 오류 처리 및 사용자에게 오류 메시지 표시 가능
+    }
+  };
 
   return (
     <StyledContainer>
@@ -21,9 +42,9 @@ const Login = () => {
         </label>
         <StInput
           type="text"
-          value={email}
+          value={id}
           onChange={(e) => {
-            setEmail(e.target.value);
+            setId(e.target.value);
           }}
         />
         <label>
@@ -31,31 +52,16 @@ const Login = () => {
         </label>
         <StInput
           type="password"
-          value={pw}
+          value={password}
           onChange={(e) => {
-            setPw(e.target.value);
+            setPassword(e.target.value);
           }}
         />
         <StButton
           size="large"
           bgcolor={colors.get('green')}
           color={colors.get('white')}
-          onClick={() => {
-            // (1) 로그인 완료
-
-            alert(email);
-            alert(pw);
-
-            dispatch(
-              login({
-                email: email,
-                pw: pw,
-              })
-            );
-
-            // (2) 페이지 이동
-            navigate('/');
-          }}
+          onClick={handleSubmit}
         >
           접속하겠네
         </StButton>

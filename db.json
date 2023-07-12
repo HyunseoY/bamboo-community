@@ -1,0 +1,84 @@
+{
+  "feeds": [
+    {
+      "category": "속풀이",
+      "contents": "속풀이요",
+      "writerId": 1,
+      "timestamp": "2023-07-12T22:25:51.590Z",
+      "isDeleted": false,
+      "id": 1
+    },
+    {
+      "category": "꿀정보",
+      "contents": "꿀정보 받으시오",
+      "writerId": 1,
+      "timestamp": "2023-07-12T22:26:02.755Z",
+      "isDeleted": false,
+      "id": 2
+    },
+    {
+      "category": "고백",
+      "contents": "내 뭐라했는가",
+      "writerId": 1,
+      "timestamp": "2023-07-12T22:26:15.510Z",
+      "isDeleted": false,
+      "id": 3
+    },
+    {
+      "category": "비밀",
+      "contents": "그렇다질 않아",
+      "writerId": 1,
+      "timestamp": "2023-07-12T22:26:27.875Z",
+      "isDeleted": false,
+      "id": 4
+    },
+    {
+      "category": "상담",
+      "contents": "거 참 사람 성미가 급하구먼",
+      "writerId": 1,
+      "timestamp": "2023-07-12T22:26:43.681Z",
+      "isDeleted": false,
+      "id": 5
+    },
+    {
+      "category": "고백",
+      "contents": "ㅇㅁㄴㅇ",
+      "writerId": 1,
+      "timestamp": "2023-07-12T22:28:41.253Z",
+      "isDeleted": false,
+      "id": 6
+    },
+    {
+      "category": "상담",
+      "contents": "아니아니",
+      "writerId": 1,
+      "timestamp": "2023-07-12T22:30:24.546Z",
+      "isDeleted": false,
+      "id": 7
+    },
+    {
+      "category": "속풀이",
+      "contents": "속1",
+      "writerId": 1,
+      "timestamp": "2023-07-12T22:31:36.320Z",
+      "isDeleted": false,
+      "id": 8
+    },
+    {
+      "category": "속풀이",
+      "contents": "속2",
+      "writerId": 1,
+      "timestamp": "2023-07-12T22:31:42.328Z",
+      "isDeleted": false,
+      "id": 9
+    },
+    {
+      "category": "꿀정보",
+      "contents": "asd",
+      "writerId": 1,
+      "timestamp": "2023-07-12T23:00:32.568Z",
+      "isDeleted": false,
+      "id": 10
+    }
+  ]
+}

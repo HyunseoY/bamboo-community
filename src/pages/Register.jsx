@@ -1,18 +1,34 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { join } from '../redux/modules/userSlice';
+import { registerUser } from '../api/user';
 import { colors } from '../shared/colors';
 
 const Register = () => {
-  const [email, setEmail] = useState('');
-  const [pw, setPw] = useState('');
+  const [id, setId] = useState('');
+  const [password, setPassword] = useState('');
   const [confPw, setConfPw] = useState('');
-  const [name, setName] = useState('');
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { id, password } = e.target.elements;
+
+    try {
+      // 회원가입 API 호출
+      await registerUser(id, password);
+      setId('');
+      setPassword('');
+      alert('회원가입 완료!');
+      console.log('회원가입이 성공적으로 완료되었습니다.');
+      // 회원가입 성공 후 추가적인 작업 수행 가능
+      navigate('/login');
+    } catch (error) {
+      console.error('회원가입 오류:', error.message);
+      // 오류 처리 및 사용자에게 오류 메시지 표시 가능
+    }
+  };
 
   return (
     <StyledContainer>
@@ -23,16 +39,16 @@ const Register = () => {
         </label>
         <StInput
           type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={id}
+          onChange={(e) => setId(e.target.value)}
         />
         <label>
           <StContainer size={20}>비밀번호</StContainer>
         </label>
         <StInput
           type="password"
-          value={pw}
-          onChange={(e) => setPw(e.target.value)}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <label>
           <StContainer size={20}>비밀번호 확인</StContainer>
@@ -42,34 +58,18 @@ const Register = () => {
           value={confPw}
           onChange={(e) => setConfPw(e.target.value)}
         />
-        <label>
-          <StContainer size={20}>별명</StContainer>
-        </label>
-        <StInput
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+
         <StButton
           size="large"
           bgcolor={colors.get('green')}
           color="#fff"
-          onClick={() => {
-            if (pw !== confPw) {
+          onClick={async () => {
+            if (password !== confPw) {
               alert('비밀번호가 다릅니다. 확인해주세요!');
               return false;
             }
 
-            dispatch(
-              join({
-                email,
-                pw,
-                name,
-              })
-            );
-
-            alert('회원가입 완료!');
-            navigate('/login');
+            await handleSubmit();
           }}
         >
           가입하겠소
