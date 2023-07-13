@@ -2,7 +2,6 @@ import { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { colors } from '../shared/colors';
-import { useMutation } from 'react-query';
 import { loginUser } from '../api/user';
 
 const Login = () => {
@@ -10,23 +9,19 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   const navigate = useNavigate();
-  const loginMutation = useMutation(loginUser);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       // 로그인 API 호출
-      const response = await loginMutation.mutateAsync({
-        id,
-        password,
-      });
-
-      console.log('로그인 성공!');
-      console.log('토큰:', response.token);
+      const token = await loginUser(id, password);
+      setId('');
+      setPassword('');
+      alert('로그인 완료!');
+      console.log('로그인이 성공적으로 완료되었습니다.');
       // 로그인 성공 후 추가적인 작업 수행 가능
-
-      navigate('/'); // 로그인 성공 시 이동할 페이지 경로
+      navigate('/');
     } catch (error) {
       console.error('로그인 오류:', error.message);
       // 오류 처리 및 사용자에게 오류 메시지 표시 가능
@@ -36,7 +31,7 @@ const Login = () => {
   return (
     <StyledContainer>
       <StContainer size={40}>접속</StContainer>
-      <StyledForm>
+      <StyledForm onSubmit={handleSubmit}>
         <label>
           <StContainer size={20}>전자우편주소</StContainer>
         </label>
@@ -58,10 +53,10 @@ const Login = () => {
           }}
         />
         <StButton
+          type="submit"
           size="large"
           bgcolor={colors.get('green')}
           color={colors.get('white')}
-          onClick={handleSubmit}
         >
           접속하겠네
         </StButton>

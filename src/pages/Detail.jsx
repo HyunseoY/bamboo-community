@@ -9,6 +9,7 @@ import Button from '../elem/Button';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
 import SaveIcon from '@material-ui/icons/Save';
+import moment from 'moment';
 
 const Detail = () => {
   const navigate = useNavigate();
@@ -66,7 +67,9 @@ const Detail = () => {
           <PostInfo>
             <div>
               <p>유저이름</p>
-              <p>{selectedData.timestamp}</p>
+              <p>
+                {moment(selectedData.timestamp).format('YYYY. M. D. A h:mm')}
+              </p>
             </div>
             {isEditing ? (
               <Button

@@ -13,7 +13,11 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { id, password } = e.target.elements;
+
+    if (password !== confPw) {
+      alert('비밀번호가 다릅니다. 확인해주세요!');
+      return false;
+    }
 
     try {
       // 회원가입 API 호출
@@ -33,7 +37,7 @@ const Register = () => {
   return (
     <StyledContainer>
       <StContainer size={40}>가입신청서</StContainer>
-      <StyledForm>
+      <StyledForm onSubmit={handleSubmit}>
         <label>
           <StContainer size={20}>전자우편주소</StContainer>
         </label>
@@ -59,19 +63,7 @@ const Register = () => {
           onChange={(e) => setConfPw(e.target.value)}
         />
 
-        <StButton
-          size="large"
-          bgcolor={colors.get('green')}
-          color="#fff"
-          onClick={async () => {
-            if (password !== confPw) {
-              alert('비밀번호가 다릅니다. 확인해주세요!');
-              return false;
-            }
-
-            await handleSubmit();
-          }}
-        >
+        <StButton size="large" bgcolor={colors.get('green')} color="#fff">
           가입하겠소
         </StButton>
         <StButton
