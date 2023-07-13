@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { styled } from 'styled-components';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { colors } from '../shared/colors';
 import { useDispatch } from 'react-redux';
 import { selectedItem } from '../redux/modules/selectItem';
 
-function Select() {
+function Select({ onSelect }) {
   const options = ['속풀이', '꿀정보', '고백', '비밀', '상담'];
 
   const dispatch = useDispatch();
@@ -17,6 +17,8 @@ function Select() {
     setSelected(option);
     dispatch(selectedItem(option));
     setIsOpen(false);
+
+    onSelect(option); // 선택된 값 전달
   };
 
   return (

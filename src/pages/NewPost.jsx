@@ -1,24 +1,37 @@
-import React, { useState } from 'react';
-import Layout from '../components/Layout';
+import { useState } from 'react';
 import { styled } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import Select from '../elem/Select';
 import { colors } from '../shared/colors';
 import { addFeed } from '../api/feeds';
-import { useSelector } from 'react-redux';
+import Layout from '../components/Layout';
+import Select from '../elem/Select';
 import Button from '../elem/Button';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const NewPost = () => {
   const navigate = useNavigate();
   const [contents, setContents] = useState('');
+  const [selected, setSelected] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const date = new Date();
 
-  const selected = useSelector((state) => state.selectItem);
-  console.log('선택', selected);
+  const handleSelect = (value) => {
+    setSelected(value);
+    setErrorMessage('');
+  };
 
   const handleSubmit = async () => {
+    if (!selected) {
+      setErrorMessage('카테고리를 선택해주시오.');
+      return;
+    }
+
+    if (!contents) {
+      setErrorMessage('내용을 입력해주시오.');
+      return;
+    }
+
     // 작성 내용과 선택한 아이템을 서버로 전송하여 데이터베이스에 저장
     const newFeed = {
       category: selected,
@@ -51,12 +64,13 @@ const NewPost = () => {
         >
           <ArrowBackIcon />
         </Button>
-        <Select />
+        <Select onSelect={handleSelect} />
         <Postarea
           placeholder="여기에 글을 쓰시오"
           value={contents}
           onChange={(e) => setContents(e.target.value)}
         />
+        {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
         <ButtonContainer>
           <Button
             margin={'20px'}
@@ -102,4 +116,9 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   padding-right: 40px;
+`;
+
+const ErrorMessage = styled.div`
+  color: red;
+  margin-left: 30px;
 `;

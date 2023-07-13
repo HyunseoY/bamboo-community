@@ -1,4 +1,3 @@
-import React from 'react';
 import { styled } from 'styled-components';
 import Feed from '../../components/Feed';
 import Layout from '../../components/Layout';

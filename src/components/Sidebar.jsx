@@ -1,12 +1,11 @@
-import React from 'react';
 import { styled } from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
 import ForumIcon from '@material-ui/icons/Forum';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import HearingIcon from '@material-ui/icons/Hearing';
 import MicIcon from '@material-ui/icons/Mic';
-import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
   const navigate = useNavigate();

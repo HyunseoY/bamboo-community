@@ -1,16 +1,7 @@
-import React from 'react';
-import Layout from './Layout';
 import Form from './Form';
 import { styled } from 'styled-components';
-import { useQuery } from 'react-query';
-import { getFeeds } from '../api/feeds';
 
 const FeedBox = ({ children }) => {
-  const { isLoading, isError, data } = useQuery('feeds', getFeeds);
-  console.log(data);
-
-  if (isLoading) return <h1>기다리시오...</h1>;
-  if (isError) return <h1>문제가 있구려</h1>;
   return (
     <FeedWrapper>
       <Form />

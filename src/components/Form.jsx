@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { styled } from 'styled-components';
 import CreateIcon from '@material-ui/icons/Create';
 import { useNavigate } from 'react-router-dom';
 
 const Form = () => {
-  const [hovered, setHovered] = React.useState(false);
+  const [hovered, setHovered] = useState(false);
   const navigate = useNavigate();
 
   const handleHover = () => {
