@@ -45,11 +45,11 @@
 
 | API 이름         | URL                      | Method | Request                                                                          | Response             |
 | ---------------- | ------------------------ | ------ | -------------------------------------------------------------------------------- | -------------------- |
-| 게시글 전체 조회 | /, /각 카테고리 페이지들 | GET    | axios.get('/feeds')                                                              | 게시글 리스트 데이터 |
+| 게시글 전체 조회 | /, /각 카테고리 페이지들 | GET    | 'feeds'                                                                          | 게시글 리스트 데이터 |
 | 게시글 작성      | /newpost                 | POST   | {category: selected, contents, writerId: 1, timestamp: date, isDeleted: false, } | 작성 게시글 데이터   |
-| 게시글 상세 조회 | /detail                  | GET    | selectedData = data?.data.find((item) => item.id === parseInt(id));              | 게시글 데이터        |
+| 게시글 상세 조회 | /detail                  | GET    | 'feeds'                                                                          | 게시글 데이터        |
 | 게시글 수정      | /detail                  | PUT    | { ...selectedData, contents: editedContents }                                    | 수정된 게시글 데이터 |
-| 게시글 삭제      | /, /각 카테고리 페이지들 | DELETE | axios.delete('/feeds/${feedId}')                                                 | 게시글 데이터 삭제   |
+| 게시글 삭제      | /, /각 카테고리 페이지들 | DELETE | '/feeds/${feedId}'                                                               | 게시글 데이터 삭제   |
 | 회원가입         | /register                | POST   | {id, password}                                                                   | 작성 유저 데이터     |
 | 로그인           | /login                   | POST   | {id, password}                                                                   | 유저 데이터          |
 
