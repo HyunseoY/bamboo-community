@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../api/user';
 import { colors } from '../shared/colors';
+import bamboo_forest from '../assets/bamboo_forest.svg';
 
 const Register = () => {
   const [id, setId] = useState('');
@@ -35,67 +36,93 @@ const Register = () => {
   };
 
   return (
-    <StyledContainer>
-      <StContainer size={40}>가입신청서</StContainer>
-      <StyledForm onSubmit={handleSubmit}>
-        <label>
-          <StContainer size={20}>전자우편주소</StContainer>
-        </label>
-        <StInput
-          type="text"
-          value={id}
-          onChange={(e) => setId(e.target.value)}
-        />
-        <label>
-          <StContainer size={20}>비밀번호</StContainer>
-        </label>
-        <StInput
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <label>
-          <StContainer size={20}>비밀번호 확인</StContainer>
-        </label>
-        <StInput
-          type="password"
-          value={confPw}
-          onChange={(e) => setConfPw(e.target.value)}
-        />
+    <Wrapper>
+      <StyledContainerLeft>
+        <ForestLogo src={bamboo_forest} alt="" />
+        마음에 담아두면 병나요!
+      </StyledContainerLeft>
 
-        <StButton size="large" bgcolor={colors.get('green')} color="#fff">
-          가입하겠소
-        </StButton>
-        <StButton
-          type="button"
-          size="large"
-          bgcolor={colors.get('green')}
-          color="#fff"
-          onClick={() => {
-            navigate('/login');
-          }}
-        >
-          ◁ 접속으로 돌아가겠네
-        </StButton>
-      </StyledForm>
-    </StyledContainer>
+      <StyledContainerRight>
+        <StContainer size={40}>가입신청서</StContainer>
+        <StyledForm onSubmit={handleSubmit}>
+          <label>
+            <StContainer size={20}>별명</StContainer>
+          </label>
+          <StInput
+            type="text"
+            value={id}
+            onChange={(e) => setId(e.target.value)}
+          />
+          <label>
+            <StContainer size={20}>비밀번호</StContainer>
+          </label>
+          <StInput
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <label>
+            <StContainer size={20}>비밀번호 확인</StContainer>
+          </label>
+          <StInput
+            type="password"
+            value={confPw}
+            onChange={(e) => setConfPw(e.target.value)}
+          />
+
+          <StButton size="large" bgcolor={colors.get('green')} color="#fff">
+            가입하겠소
+          </StButton>
+          <StButton
+            type="button"
+            size="large"
+            bgcolor={colors.get('green')}
+            color="#fff"
+            onClick={() => {
+              navigate('/login');
+            }}
+          >
+            ◁ 접속으로 돌아가겠네
+          </StButton>
+        </StyledForm>
+      </StyledContainerRight>
+    </Wrapper>
   );
 };
 
 export default Register;
 
-const StyledContainer = styled.section`
-  height: 79vh;
-  width: 100%;
+const Wrapper = styled.div`
+  display: flex;
+`;
+
+const StyledContainerLeft = styled.section`
+  width: 50%;
   display: flex;
   flex-direction: column;
-  gap: 50px;
   justify-content: center;
+  align-items: center;
+  font-size: 20px;
+`;
+
+const ForestLogo = styled.img`
+  width: 50%;
+`;
+
+const StyledContainerRight = styled.section`
+  height: 100vh;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  background-color: #ffffffc5;
   padding: 0 12px;
 `;
 
 const StyledForm = styled.form`
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   gap: 20px;

@@ -95,6 +95,14 @@
       "timestamp": "2023-07-13T07:46:59.873Z",
       "isDeleted": false,
       "id": 17
+    },
+    {
+      "category": "고백",
+      "contents": "asdasd",
+      "writerId": 1,
+      "timestamp": "2023-07-14T08:11:04.704Z",
+      "isDeleted": false,
+      "id": 18
     }
   ]
 }

@@ -1,52 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = [
-  {
-    id: Date.now(),
-    email: 'test@gmail.com',
-    pw: '1234',
-    userName: '홍길동',
-    isLogin: false,
-  },
-];
+const initialState = {
+  userInfo: null,
+};
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    login: (state, action) => {
-      return state.map((user) => {
-        if (
-          user.email === action.payload.email &&
-          user.pw === action.payload.pw
-        ) {
-          return { ...user, isLogin: !user.isLogin };
-        } else {
-          return user;
-        }
-      });
-    },
-    join: (state, action) => {
-      const newUser = {
-        id: Date.now(),
-        email: action.payload.email,
-        pw: action.payload.pw,
-        userName: action.payload.name,
-        isLogin: false,
+    loginSuccess: (state, action) => {
+      return {
+        ...state,
+        userInfo: action.payload,
       };
-
-      state.push(newUser);
     },
-    logout: (state, action) => {
-      // 여기서 해야하는 동작??? : isLogin을 false
-      // map!!!
-      //   action.payload
-      return state.map((user) => {
-        return { ...user, isLogin: false };
-      });
+    logout: (state) => {
+      state.userInfo = null;
     },
   },
 });
 
-export const { login, join, logout } = userSlice.actions;
+export const { loginSuccess, logout } = userSlice.actions;
 export default userSlice.reducer;

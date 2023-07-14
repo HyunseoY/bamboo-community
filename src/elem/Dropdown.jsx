@@ -1,18 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
 import { logout } from '../redux/modules/userSlice';
 
 const Dropdown = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const userList = useSelector(function (state) {
-    return state.userSlice;
-  });
-
-  const loginUser = userList.find((user) => user.isLogin === true) || {};
 
   return (
     <DropdownBox>
@@ -27,7 +18,6 @@ const Dropdown = () => {
         onClick={() => {
           const isConfirmed = window.confirm('로그아웃 되었습니다');
           if (isConfirmed) {
-            dispatch(logout(loginUser.id));
             navigate('/login');
           }
         }}

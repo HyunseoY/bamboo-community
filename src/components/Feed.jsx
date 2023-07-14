@@ -33,7 +33,7 @@ const Feed = ({ feed }) => {
       <div>
         <Username>유저이름</Username>
         <PostTime>
-          {moment(feed.timestamp).format('YYYY. M. D. A h:mm')}
+          {moment(feed.timestamp).format('YYYY년 M월 D일 A h:mm')}
         </PostTime>
         <FeedContents>{feed.contents}</FeedContents>
         <FeedCategory>#{feed.category}</FeedCategory>

@@ -1,23 +1,18 @@
 import { useState } from 'react';
 import { styled } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import bamboo_logo from '../assets/bamboo_logo.png';
 import Dropdown from '../elem/Dropdown';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
   const navigate = useNavigate();
   const [view, setView] = useState(false);
 
-  const userList = useSelector(function (state) {
-    return state.userSlice;
-  });
-
-  console.log('userList', userList);
-
-  const loginUser = userList.find((user) => user.isLogin === true);
+  const user = useSelector((state) => state.userSlice.userInfo);
+  console.log('user', user);
 
   return (
     <HeaderContainer>
@@ -35,7 +30,7 @@ const Header = () => {
               setView(!view);
             }}
           >
-            {/* 반갑소, {loginUser.userName} !! */}
+            반갑소, {user} !!
             {view ? <ExpandLessIcon /> : <ExpandMoreIcon />}
             {view && <Dropdown />}
           </NickName>

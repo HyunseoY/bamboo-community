@@ -29,17 +29,29 @@
 
 ### 2. 배포 주소
 
+없음
+
 ### 3. 와이어 프레임
 
 ![image](https://github.com/HyunseoY/GOE_CINEMA/assets/130683029/13e132c8-cc87-49fd-9b4b-14193cf5a626)
 
 ### 4. 기술스택
 
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white"><img src="https://img.shields.io/badge/html-E34F26?style=for-the-badge&logo=html5&logoColor=white"><img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"><img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"><img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white"><img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white"><img src="https://img.shields.io/badge/html-E34F26?style=for-the-badge&logo=html5&logoColor=white"><img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"><img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white"><img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white">
 
 ### 5. components
 
 ### 6. API Table
+
+| API 이름         | URL                      | Method | Request                                                                          | Response             |
+| ---------------- | ------------------------ | ------ | -------------------------------------------------------------------------------- | -------------------- |
+| 게시글 전체 조회 | /, /각 카테고리 페이지들 | GET    | axios.get('/feeds')                                                              | 게시글 리스트 데이터 |
+| 게시글 작성      | /newpost                 | POST   | {category: selected, contents, writerId: 1, timestamp: date, isDeleted: false, } | 작성 게시글 데이터   |
+| 게시글 상세 조회 | /detail                  | GET    | selectedData = data?.data.find((item) => item.id === parseInt(id));              | 게시글 데이터        |
+| 게시글 수정      | /detail                  | PUT    | { ...selectedData, contents: editedContents }                                    | 수정된 게시글 데이터 |
+| 게시글 삭제      | /, /각 카테고리 페이지들 | DELETE | axios.delete('/feeds/${feedId}')                                                 | 게시글 데이터 삭제   |
+| 회원가입         | /register                | POST   | {id, password}                                                                   | 작성 유저 데이터     |
+| 로그인           | /login                   | POST   | {id, password}                                                                   | 유저 데이터          |
 
 ### 7. 페이지
 
